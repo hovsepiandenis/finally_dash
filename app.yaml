@@ -1,0 +1,9 @@
+runtime: python312
+
+
+entrypoint: gunicorn -b :$PORT Plotly_Dash:app.server
+
+
+handlers:
+- url: /.*
+  script: auto

@@ -1,0 +1,6 @@
+dash
+gunicorn
+pandas
+numpy
+plotly
+waitress

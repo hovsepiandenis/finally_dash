@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 # Загрузка данных
-df = pd.read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
+df = pd.read_csv('.\\WA_Fn-UseC_-Telco-Customer-Churn.csv')
 churn_counts = df['Churn'].value_counts()
 
 # Преобразуем столбец SeniorCitizen в категориальные значения
@@ -208,9 +208,10 @@ def update_histogram(relayout_data):
 
 # Callback для третьего графика - распределение оттока по месячному доходу
 @app.callback(
-    Output('monthly-charges-churn', 'figure')
+    Output('monthly-charges-churn', 'figure'),
+    Input('churn-pie-chart', 'clickData')  # Dummy input
 )
-def update_monthly_charges_chart():
+def update_monthly_charges_chart(click_data):
     fig = px.histogram(
         df, 
         x='MonthlyCharges', 
